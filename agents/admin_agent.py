@@ -14,6 +14,11 @@ class AdminAgent:
         self.access_token = self.keycloak_openid.token(username, password)['access_token']
 
     def get_keycloak_id(self):
+        """
+        Get the keycloak id of the sender (admin)
+
+        :return: Keycloak ID
+        """
         r = requests.get(ADMIN_URL + '/id',
                          headers={'Content-Type': 'application/json',
                                   'Authorization': 'Bearer {}'.format(self.access_token)})
@@ -21,6 +26,14 @@ class AdminAgent:
         return r.content.decode('utf-8')
 
     def create_keycloak_user(self, create_request):
+        """
+        Send request to REST API to create keycloak user in keycloak.
+        As well as create user in database
+
+        :param create_request: create_request_dto
+        :return: Nothing
+        :rtype: None
+        """
         r = requests.post(ADMIN_URL,
                           headers={'Content-Type': 'application/json',
                                    'Authorization': 'Bearer {}'.format(self.access_token)},
