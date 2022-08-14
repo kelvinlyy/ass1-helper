@@ -1,0 +1,65 @@
+[
+  {
+    "firstName": "Ryan",
+    "lastName": "Chan",
+    "sex": "Male",
+    "email": "ryan@test.com",
+    "role": "worker",
+    "username": "ryan",
+    "password": "password"
+  },
+  {
+    "firstName": "Peter",
+    "lastName": "Chan",
+    "sex": "Female",
+    "email": "peter@test.com",
+    "role": "worker",
+    "username": "peter",
+    "password": "password"
+  },
+  {
+    "firstName": "Harry",
+    "lastName": "Lai",
+    "sex": "Male",
+    "email": "harry@test.com",
+    "role": "worker",
+    "username": "harry",
+    "password": "password"
+  },
+  {
+    "firstName": "Emily",
+    "lastName": "Yau",
+    "sex": "Male",
+    "email": "emily@test.com",
+    "role": "worker",
+    "username": "emily",
+    "password": "password"
+  },
+  {
+    "firstName": "Joe",
+    "lastName": "Chan",
+    "sex": "Female",
+    "email": "joe@test.com",
+    "role": "manager",
+    "username": "joe",
+    "password": "password"
+  },
+  {
+    "firstName": "Zoe",
+    "lastName": "Lee",
+    "sex": "Male",
+    "email": "zoe@test.com",
+    "role": "manager",
+    "username": "zoe",
+    "password": "password"
+  },
+  {
+    "firstName": "Kelvin",
+    "lastName": "Lai",
+    "sex": "Male",
+    "email": "kelvin@test.com",
+    "role": "manager",
+    "username": "kelvin",
+    "password": "password"
+  }
+]
