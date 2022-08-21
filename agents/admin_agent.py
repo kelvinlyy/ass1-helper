@@ -25,7 +25,7 @@ class AdminAgent:
 
         return r.content.decode('utf-8')
 
-    def create_keycloak_user(self, create_request):
+    def create_keycloak_user(self, create_request) -> dict:
         """
         Send request to REST API to create keycloak user in keycloak.
         As well as create user in database
@@ -47,7 +47,13 @@ class AdminAgent:
                                      'Authorization': 'Bearer {}'.format(self.access_token)})
         return r.status_code
 
+    def get_all_users(self):
+        r = requests.get(ADMIN_URL + f'/all_users',
+                         headers={'Content-Type': 'application/json',
+                                  'Authorization': 'Bearer {}'.format(self.access_token)})
+        return json.loads(r.content.decode('utf-8'))
+
 
 if __name__ == "__main__":
     admin_agent = AdminAgent()
-    print(admin_agent.get_keycloak_id())
+    print(json.dumps(admin_agent.get_all_users(), indent=2))
