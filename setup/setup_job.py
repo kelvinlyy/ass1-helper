@@ -1,17 +1,21 @@
-import json
 from agents.job_agent import JobAgent
+import pandas as pd
+import json
 
 
 def create_jobs():
-    with open('../data/create_job.json', 'rb') as f:
-        create_job_requests = json.load(f)
+    # load job data from csv
+    job_df = pd.read_csv('../data/job_data.csv', header=0)
 
-    job_agent = JobAgent()
-    manager_list = ['Joe', 'Joe', 'Joe', 'Zoe', 'Kelvin', 'Kelvin', 'Zoe']
+    # identify the job manager and the job dto
+    job_managers = job_df.loc[:, 'manager']
+    create_job_dto = json.loads(job_df.loc[:, ['code', 'title', 'description', 'workerID']].to_json(orient='records'))
 
-    assert(len(create_job_requests) == len(manager_list))
-    for i in range(len(create_job_requests)):
-        job_agent.create_job(manager_list[i], 'password', create_job_requests[i])
+    # login as the manager
+    # create job using the job dto
+    for manager, job_request in zip(job_managers, create_job_dto):
+        job_agent = JobAgent(username=manager.lower(), password='password')
+        job_agent.create_job(job_request)
 
 
 if __name__ == "__main__":

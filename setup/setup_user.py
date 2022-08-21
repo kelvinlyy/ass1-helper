@@ -1,18 +1,24 @@
 import json
 from agents.admin_agent import AdminAgent
+import pandas as pd
 
 
 def create_users():
-    with open('../data/create_user.json', 'rb') as f:
-        create_user_requests = json.load(f)
+    # load user data from csv
+    user_df = pd.read_csv('../data/user_data.csv', header=0,
+                          names=['firstName', 'lastName', 'sex', 'email', 'role', 'username', 'password'])
+    create_user_dto = json.loads(user_df.to_json(orient='records'))
 
     admin_agent = AdminAgent()
 
+    # create keycloak user
+    # record the responded keycloak id
     kc_ids = []
-    for request in create_user_requests:
-        kc_id = admin_agent.create_keycloak_user(request)['kc_id']
+    for user_request in create_user_dto:
+        kc_id = admin_agent.create_keycloak_user(user_request)['kc_id']
         kc_ids.append(kc_id)
 
+    # save the recorded keycloak ids to a txt file
     with open('../data/user_kc_id.txt', 'w') as f:
         for kc_id in kc_ids:
             f.write(f'{kc_id}\n')
