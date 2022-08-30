@@ -1,0 +1,8 @@
+userID,firstName,lastName,sex,email,role,username,password
+1,Ryan,Chan,Male,ryan@mail.com,worker,ryan,password
+2,Peter,Chan,Female,peter@mail.com,worker,peter,password
+3,Harry,Lai,Female,harry@mail.com,worker,harry,password
+4,Emily,Yau,Female,emily@mail.com,worker,emily,password
+5,Joe,Chan,Male,joe@mail.com,manager,joe,password
+6,Zoe,Lee,Male,zoe@mail.com,manager,zoe,password
+7,Kelvin,Lai,Male,kelvin@mail.com,manager,kelvin,password
